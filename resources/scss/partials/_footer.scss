@@ -1,0 +1,131 @@
+footer {
+
+    .footer-top {
+
+        background-image: url('/resources/img/footer-bg.jpg');
+        width: 100%;
+
+
+
+        .container {
+            background-image: url('/resources/img/dc-logo-bg.png');
+            background-repeat: no-repeat;
+            background-position: right;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+
+            > div {
+                padding: 25px 25px 25px 0px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 10px 0;
+                
+                li {
+                    padding: 4px 0;
+
+                    a {
+                        text-decoration: none;
+                        color: rgba(116,116,116,255);
+
+                        &:hover {
+                            color: rgba(2,130,249,255);
+                        }
+                    }
+                }
+            }
+            h3 {
+                color: white;
+            }
+        }
+
+    }
+
+
+    .footer-bottom {
+
+        background-color: rgba(48,48,48,255);
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+
+            .call-to-action {
+                padding: 10px 0;
+
+                button {
+                    color: white;
+                    background-color: transparent;
+                    border: 2px solid rgba(2,130,249,255);
+                    padding: 8px 10px;
+                    cursor: pointer;
+                }
+            }
+            .social {
+                display: flex;
+                align-items: center;
+
+                h3 a{
+                    color: rgba(2,130,249,255);
+                    text-decoration: none;
+                } 
+                ul {
+                    display: flex;
+                    list-style: none;
+                    margin-left: 20px;
+
+                    li {
+                        padding: 0 6px;
+
+                        img {
+                            width: 30px;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+section {
+
+    background-color: rgba(2,130,249,255);
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+
+        .shop-menu-items {
+            display: flex;
+            padding: 20px 0;
+            margin-bottom: 0 !important;
+            
+            li {
+                width: calc(100% / 5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+
+                    img {
+                        width: 40px;
+                        margin-right: 8px;
+                    }
+                }
+                .title {
+                    display: flex;
+                    align-items: center;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

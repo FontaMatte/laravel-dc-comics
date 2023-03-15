@@ -4,21 +4,21 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>DC Comics</title>
+        <title>@yield('page_title')</title>
 
         {{-- Includiamo gli assets con la direttiva @vite --}}
         @vite('resources/js/app.js')
     </head>
     <body>
-        <header>
-            HEADER
-        </header>
+
+        @include('partials.header')
 
         <main>
+
             @yield('content')
+            
         </main>
 
-        <footer>
-            FOOTER
-        </footer>
+        @include('partials.footer')
+
     </body>

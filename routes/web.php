@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Controllers
 use App\Http\Controllers\Admin\ComicController;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,9 @@ use App\Http\Controllers\Admin\ComicController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::resource('/', MainController::class);
 
 Route::resource('comics', ComicController::class);
-
+// oppure
 // Route::get('/comics',[ComicController::class, 'index']);

@@ -1,32 +1,37 @@
 @extends('layout.app')
 
+{{-- SECTION TITLE --}}
+@section('page_title') DC Comics @endsection 
+
+{{-- SECTION MAIN --}}
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <h1 class="card-title">
-                    Tutti i fumetti
-                </h1>
-                <a href="{{ route('comics.create') }}" class="btn btn-success">
-                    Aggiungi fumetto
-                </a>
-            </div>
+
+<div class="container">
+  <h1>
+    CURRENT SERIES
+  </h1>
+  <a href="{{ route('comics.create') }}" class="btn btn-success mt-4">
+    Aggiungi fumetto
+  </a>
+  <div class="cards-container">
+      @foreach ($comics as $comic)        
+      <div class="card">
+        <div> 
+          <img src="{{ $comic->thumb }}" alt="{{ $comic->title }}">
         </div>
-        <div class="row g-3">
-            @foreach ($comics as $comic)
-                <div class="col-4 mb-3">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h2 class="card-title">
-                                {{ $comic->title }}
-                            </h2>
-                            <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary">
-                                Vedi dettagli
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
+        <h4 class="bg-dark">
+            {{ $comic->series }}
+        </h4>
+        <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary">
+            Vedi dettagli
+        </a>
+      </div>
+      @endforeach
+  </div>
+
+  <button>
+    load more
+  </button>
+</div>
+
 @endsection
