@@ -19,9 +19,16 @@
                         <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-warning">
                             Modifica
                         </a>
-                        <a href="{{ route('comics.index') }}" class="btn btn-danger">
-                            Elimina
-                        </a>
+                        <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                            @csrf
+
+                            {{-- aggiungo il medoto --}}
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger">
+                                Elimina
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
