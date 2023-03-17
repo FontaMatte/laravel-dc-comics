@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 // Models
 use App\Models\Comic;
 
+// Helpers
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+
 class ComicController extends Controller
 {
     /**
@@ -32,6 +36,26 @@ class ComicController extends Controller
         return view('comics.create');
     }
 
+    // Funzione di Validazione Dati
+    private function validateData($data) {
+
+        // Validazione dati
+        $validator = Validator::make($data,[
+            'title' => 'required|max:64',
+            'description' => 'required|max:1024',
+            'thumb' => 'required',
+            'price' => 'required | numeric | between:0,99.99 | decimal:0,2',
+            'series' => 'required|max:32',
+            'sale_date' => 'required|date',
+            'type' => [
+                'required',
+                Rule::in(['comic', 'graphic']),
+            ]
+        ])->validate();
+
+        return $validator;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -39,9 +63,14 @@ class ComicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        // Prendo i dati
         $data = $request->all();
+
+        // Richiamo la funzione validateData() per validate i dati
+        $this->validateData($data);
         
+        // Utilizzo i dati
         $newComic = new Comic();
         $newComic->title = $data['title'];
         $newComic->description = $data['description'];
@@ -95,7 +124,11 @@ class ComicController extends Controller
     {
         $comic = Comic::findOrFail($id);
 
+        // Prendo i dati
         $data = $request->all();
+
+        // Richiamo la funzione validateData() per validate i dati
+        $this->validateData($data);
 
         $comic->update($data);
 

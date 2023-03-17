@@ -8,6 +8,15 @@
             </div>
         </div>
         <div class="row">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>            
+            @endif
             <form action="{{ route('comics.store') }}" method="POST">
                 @csrf
 
@@ -24,7 +33,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label text-light">Prezzo *</label>
-                    <input type="number" class="form-control" name="price" id="price" placeholder="inserisci il prezzo" step="0.1" required>
+                    <input type="number" class="form-control" name="price" id="price" placeholder="inserisci il prezzo" step="0.01" required>
                 </div>
                 <div class="mb-3">
                     <label for="series" class="form-label text-light">Serie *</label>
