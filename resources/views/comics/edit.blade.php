@@ -27,14 +27,14 @@
                     <input type="text" class="form-control" name="title" id="title" 
                     placeholder="inserisci il titolo" 
                     required maxlength="64"
-                    value="{{ $comic->title }}">
+                    value="{{ old('title', $comic->title) }}">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label text-light">Descrizione *</label>
                     <textarea class="form-control" id="description" name="description" rows="3" 
                     placeholder="inserisci descrizione" 
                     maxlength="1024">
-                    {{ $comic->description }}"
+                    {{ old('description', $comic->description) }}
                     </textarea>
                 </div>
                 <div class="input-group mb-3">
@@ -44,24 +44,24 @@
                     <label for="price" class="form-label text-light">Prezzo *</label>
                     <input type="number" class="form-control" name="price" id="price" 
                     placeholder="inserisci il prezzo" step="0.1" required
-                    value="{{ $comic->price }}">
+                    value="{{ old('price', $comic->price) }}">
                 </div>
                 <div class="mb-3">
                     <label for="series" class="form-label text-light">Serie *</label>
                     <input type="text" class="form-control" name="series" id="series" required maxlength="32"
-                    value="{{ $comic->series }}">
+                    value="{{ old('series', $comic->series) }}">
                 </div>
                 <div class="mb-3">
                     <label for="sale_date" class="form-label text-light">Data di Vendita *</label>
                     <input type="date" class="form-control" name="sale_date" id="sale_date" required
-                    value="{{ $comic->sale_date }}">
+                    value="{{ old('sale_date', $comic->sale_date) }}">
                 </div>
                 <div class="mb-3">
                     <label for="type" class="form-label text-light">Tipo *</label>
                     <select class="form-select" id="type" name="type">
                         <option selected>Seleziona un tipo</option>
-                        <option value="comic">Comic Book</option>
-                        <option value="graphic">Graphic Novel</option>
+                        <option value="comic" {{ old('type', $comic->type) == 'comic' ? 'selected' : '' }}>Comic Book</option>
+                        <option value="graphic" {{ old('type', $comic->type) == 'comic' ? 'selected' : '' }}>Graphic Novel</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">
