@@ -12,6 +12,9 @@ use App\Models\Comic;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
+// Request
+use App\Http\Requests\StoreComicRequest;
+
 class ComicController extends Controller
 {
     /**
@@ -62,13 +65,13 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {   
         // Prendo i dati
-        $data = $request->all();
+        $data = $request->validated();
 
         // Richiamo la funzione validateData() per validate i dati
-        $this->validateData($data);
+        // $this->validateData($data);
         
         // Utilizzo i dati
         $newComic = new Comic();
